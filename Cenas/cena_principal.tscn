@@ -1,0 +1,38 @@
+[gd_scene load_steps=6 format=3 uid="uid://1n2dg8fte0mf"]
+
+[ext_resource type="Texture2D" uid="uid://cc3dq333vddd2" path="res://Sprites/WhatsApp Image 2025-01-14 at 08.27.14.jpeg" id="1_54tpv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4gyqi"]
+size = Vector2(1152, 48)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m7xkq"]
+size = Vector2(1156, 42)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qogip"]
+size = Vector2(109, 658)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8u7l3"]
+size = Vector2(112, 649)
+
+[node name="CenaPrincipal" type="Node2D"]
+
+[node name="WhatsAppImage2025-01-14At08_27_14" type="Sprite2D" parent="."]
+position = Vector2(576, 364)
+scale = Vector2(1.56522, 1.64706)
+texture = ExtResource("1_54tpv")
+
+[node name="Teto" type="CollisionShape2D" parent="."]
+position = Vector2(576, -24)
+shape = SubResource("RectangleShape2D_4gyqi")
+
+[node name="Piso" type="CollisionShape2D" parent="."]
+position = Vector2(578, 672)
+shape = SubResource("RectangleShape2D_m7xkq")
+
+[node name="ParedeEsquerda" type="CollisionShape2D" parent="."]
+position = Vector2(-54.5, 320)
+shape = SubResource("RectangleShape2D_qogip")
+
+[node name="ParedeDireita" type="CollisionShape2D" parent="."]
+position = Vector2(1208, 323.5)
+shape = SubResource("RectangleShape2D_8u7l3")
