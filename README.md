@@ -5,7 +5,7 @@ Um projeto de escola sobre desenvolver um jogo.
 - Se você estiver no computador da escola:
     - Pressione a tecla do Windows e cole este comando no menu iniciar que aparecer (e pressione Enter):
     ```
-    powershell -Command "cd $([System.Environment]::GetFolderPath('UserProfile') + '\Downloads'); Invoke-WebRequest -Uri https://github.com/Yohanan-Al/game-project/raw/refs/heads/main/.scripts/download_repo.ps1 -OutFile .\download_repo.ps1; & .\download_repo.ps1"
+    powershell -Command "cd $([System.Environment]::GetFolderPath('UserProfile') + '\Downloads'); Invoke-WebRequest -Uri https://github.com/Yohanan-Al/game-project/raw/refs/heads/dev/.scripts/download_repo.ps1 -OutFile .\download_repo.ps1; & .\download_repo.ps1"
     ```
     - Forneça as informações que a nova tela pedir e espere ela terminar (Godot aparecer)
 - Se você estiver no seu próprio computador:

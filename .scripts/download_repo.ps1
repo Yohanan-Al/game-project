@@ -10,7 +10,7 @@ Write-Host 'Clique "OK" na tela que aparecer.'
 Start-Process ".\tmp\PortableGit.7z.exe" -Wait
 
 Write-Host "Baixando o repositorio do projeto..."
-Start-Process ".\tmp\PortableGit\cmd\git.exe" -NoNewWindow -Wait -ArgumentList "clone", "https://github.com/Yohanan-Al/game-project.git"
+Start-Process ".\tmp\PortableGit\cmd\git.exe" -NoNewWindow -Wait -ArgumentList "clone", "https://github.com/Yohanan-Al/game-project.git", "-b", "dev"
 
 mkdir ".\game-project\.tools" > $null
 Move-Item -Path ".\tmp\PortableGit" -Destination ".\game-project\.tools\PortableGit"
