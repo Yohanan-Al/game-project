@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://b5gpm5kosrc7v"]
+
+[ext_resource type="Texture2D" uid="uid://cqb0w1v5t27l" path="res://Sprites/Player/ataque_direita_player.png" id="1_xpa6h"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_54862"]
+atlas = ExtResource("1_xpa6h")
+region = Rect2(700, 0, 100, 150)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8vps6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_54862")
+}],
+"loop": true,
+"name": &"parado",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rtjsr"]
+size = Vector2(65, 88)
+
+[node name="JogadorPersonagem" type="CharacterBody2D"]
+
+[node name="CorpoSprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_8vps6")
+animation = &"parado"
+autoplay = "parado"
+offset = Vector2(-5, -70)
+
+[node name="CorpoCollision" type="CollisionShape2D" parent="."]
+position = Vector2(2.5, -39)
+shape = SubResource("RectangleShape2D_rtjsr")

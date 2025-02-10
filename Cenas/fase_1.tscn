@@ -1,3 +1,16 @@
-[gd_scene format=3 uid="uid://bhw5rgophmvwe"]
+[gd_scene load_steps=3 format=3 uid="uid://bhw5rgophmvwe"]
+
+[ext_resource type="Texture2D" uid="uid://du8x1li2go7mk" path="res://Sprites/Cenarios/floresta_cenario.jpeg" id="1_56spg"]
+[ext_resource type="PackedScene" uid="uid://b5gpm5kosrc7v" path="res://Prefab/jogador_personagem.tscn" id="2_s65ur"]
 
 [node name="Fase1" type="Node2D"]
+
+[node name="FundoSprite" type="Sprite2D" parent="."]
+texture = ExtResource("1_56spg")
+
+[node name="CameraPrincipal" type="Camera2D" parent="."]
+offset = Vector2(0, -18)
+zoom = Vector2(1.6, 1.6)
+
+[node name="JogadorPersonagem" parent="." instance=ExtResource("2_s65ur")]
+position = Vector2(-314, 20)
