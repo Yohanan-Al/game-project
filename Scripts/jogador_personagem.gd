@@ -4,7 +4,9 @@ enum Estado {
 	Normal,
 	Desviando,
 	Atacando,
-	Defendendo
+	Defendendo,
+	Morrendo,
+	ParaVoltarNormal
 }
 
 var vida = 20
@@ -84,9 +86,14 @@ func levar_dano(dano, node):
 		# Só defende se o alvo estiver em nossa frente
 		if (not corpo_sprite.flip_h and node.position.x > position.x) or (corpo_sprite.flip_h and position.x > node.position.x):
 			dano /= DEFESA
+	else:
+		corpo_sprite.play("sofrer")
+		estado_atual = Estado.ParaVoltarNormal
 	vida -= dano
 	if vida <= 0:
-		get_tree().reload_current_scene()
+		corpo_sprite.play("morrer")
+		estado_atual = Estado.Morrendo
+		velocity = Vector2.ZERO
 
 func começar_defender():
 	if estado_atual != Estado.Normal:
@@ -127,6 +134,10 @@ func _on_corpo_sprite_animation_finished() -> void:
 		Estado.Defendendo:
 			if corpo_sprite.animation == "bloqueado":
 				corpo_sprite.play("defender")
+		Estado.Morrendo:
+			get_tree().reload_current_scene()
+		Estado.ParaVoltarNormal:
+			estado_atual = Estado.Normal
 
 func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("desviar"):

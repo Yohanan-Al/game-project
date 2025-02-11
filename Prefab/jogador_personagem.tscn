@@ -1,4 +1,4 @@
-[gd_scene load_steps=51 format=3 uid="uid://b5gpm5kosrc7v"]
+[gd_scene load_steps=64 format=3 uid="uid://b5gpm5kosrc7v"]
 
 [ext_resource type="Script" path="res://Scripts/jogador_personagem.gd" id="1_37iem"]
 [ext_resource type="Texture2D" uid="uid://c85unayb351uj" path="res://Packs/Hero Knight/Sprites/HeroKnight/HeroKnight.png" id="6_x4h1h"]
@@ -158,6 +158,46 @@ region = Rect2(800, 385, 100, 55)
 atlas = ExtResource("6_x4h1h")
 region = Rect2(900, 385, 100, 55)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_8ehj7"]
+atlas = ExtResource("6_x4h1h")
+region = Rect2(800, 220, 100, 55)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a7ggt"]
+atlas = ExtResource("6_x4h1h")
+region = Rect2(900, 220, 100, 55)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kebml"]
+atlas = ExtResource("6_x4h1h")
+region = Rect2(0, 275, 100, 55)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ha67j"]
+atlas = ExtResource("6_x4h1h")
+region = Rect2(100, 275, 100, 55)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wv3uu"]
+atlas = ExtResource("6_x4h1h")
+region = Rect2(200, 275, 100, 55)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2yyws"]
+atlas = ExtResource("6_x4h1h")
+region = Rect2(300, 275, 100, 55)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gis5r"]
+atlas = ExtResource("6_x4h1h")
+region = Rect2(400, 275, 100, 55)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3jxj8"]
+atlas = ExtResource("6_x4h1h")
+region = Rect2(500, 275, 100, 55)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vvti5"]
+atlas = ExtResource("6_x4h1h")
+region = Rect2(600, 275, 100, 55)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pkidw"]
+atlas = ExtResource("6_x4h1h")
+region = Rect2(700, 275, 100, 55)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_vibey"]
 atlas = ExtResource("6_x4h1h")
 region = Rect2(0, 0, 100, 55)
@@ -189,6 +229,18 @@ region = Rect2(600, 0, 100, 55)
 [sub_resource type="AtlasTexture" id="AtlasTexture_0e6ha"]
 atlas = ExtResource("6_x4h1h")
 region = Rect2(700, 0, 100, 55)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_veoqt"]
+atlas = ExtResource("6_x4h1h")
+region = Rect2(500, 220, 100, 55)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jawj0"]
+atlas = ExtResource("6_x4h1h")
+region = Rect2(600, 220, 100, 55)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7jxvv"]
+atlas = ExtResource("6_x4h1h")
+region = Rect2(700, 220, 100, 55)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_wuq7d"]
 animations = [{
@@ -333,6 +385,41 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_8ehj7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a7ggt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kebml")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ha67j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wv3uu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2yyws")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gis5r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3jxj8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vvti5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pkidw")
+}],
+"loop": false,
+"name": &"morrer",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_vibey")
 }, {
 "duration": 1.0,
@@ -359,6 +446,20 @@ animations = [{
 "loop": true,
 "name": &"parado",
 "speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_veoqt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jawj0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7jxvv")
+}],
+"loop": false,
+"name": &"sofrer",
+"speed": 6.0
 }]
 
 [node name="JogadorPersonagem" type="CharacterBody2D"]
@@ -373,7 +474,7 @@ shape = SubResource("RectangleShape2D_t8f5u")
 [node name="CorpoSprite" type="AnimatedSprite2D" parent="."]
 scale = Vector2(2.25, 2.25)
 sprite_frames = SubResource("SpriteFrames_wuq7d")
-animation = &"bloqueado"
+animation = &"sofrer"
 autoplay = "parado"
 offset = Vector2(0, -25.5)
 
