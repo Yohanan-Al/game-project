@@ -17,6 +17,7 @@ enum Estado {
 @export var velocidade_desviar = 400
 @export var dano = 5
 @export var defesa = 5
+@export var pode_desviar = false
 
 # Essa é a velocidade que queremos atingir
 # "velocity" será interpolado para esse valor conforme o tempo passa
@@ -31,13 +32,14 @@ var desviou_tras = false
 @onready var corpo_sprite: AnimatedSprite2D = $CorpoSprite
 @onready var ataque_ray_cast: RayCast2D = $AtaqueRayCast
 var ataque_ray_cast_length: float
+var virado_por_padrao: bool
 
 # Muda a direçao da animaçao conforme o eixo da velocidade do personagem
 func atualizar_rotaçao():
 	if velocity.x > 0:
-		corpo_sprite.flip_h = false
+		corpo_sprite.flip_h = virado_por_padrao
 	elif velocity.x < 0:
-		corpo_sprite.flip_h = true
+		corpo_sprite.flip_h = not virado_por_padrao
 
 # Muda a animaçao entre parado e correndo conforme a velocidade do personagem
 func atualizar_animaçao():
@@ -61,7 +63,7 @@ func pegar_direcao():
 
 # Faz o personagem rolar para direçao especificada ou para onde ele esta se movendo
 func desviar(direçao = null):
-	if estado_atual != Estado.Normal:
+	if not pode_desviar or estado_atual != Estado.Normal:
 		return
 	
 	corpo_sprite.play("desviar")
@@ -136,6 +138,7 @@ func _on_corpo_sprite_animation_finished() -> void:
 func _ready():
 	corpo_sprite.connect("animation_finished", _on_corpo_sprite_animation_finished)
 	ataque_ray_cast_length = ataque_ray_cast.target_position.x
+	virado_por_padrao = corpo_sprite.flip_h
 
 func _physics_process(delta: float) -> void:
 	if estado_atual == Estado.Normal:
@@ -145,5 +148,5 @@ func _physics_process(delta: float) -> void:
 		velocidade_alvo = Vector2.ZERO
 	
 	atualizar_rotaçao()
-	ataque_ray_cast.target_position.x = ataque_ray_cast_length * (-1 if corpo_sprite.flip_h else 1)
+	ataque_ray_cast.target_position.x = ataque_ray_cast_length * (1 if corpo_sprite.flip_h and not virado_por_padrao else -1)
 	move_and_slide()

@@ -464,6 +464,7 @@ animations = [{
 
 [node name="JogadorPersonagem" type="CharacterBody2D"]
 script = ExtResource("1_37iem")
+pode_desviar = true
 
 [node name="CorpoCollision" type="CollisionShape2D" parent="."]
 position = Vector2(-3, -45)

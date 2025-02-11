@@ -9,7 +9,10 @@ func _physics_process(delta: float) -> void:
 	
 	var collider = ataque_ray_cast.get_collider()
 	if collider and collider.name == "JogadorPersonagem":
-		atacar()
+		if pode_desviar and collider.estado_atual == Estado.Atacando:
+			desviar()
+		else:
+			atacar()
 	else:
 		if estado_atual == Estado.Normal:
 			var direçao = (alvo.position - position).normalized()
