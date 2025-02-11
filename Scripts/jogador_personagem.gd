@@ -2,12 +2,16 @@ extends CharacterBody2D
 
 enum Estado {
 	Normal,
-	Desviando
+	Desviando,
+	Atacando
 }
+
+var vida = 20
 
 const VELOCIDADE = 300.0
 const ACELERAÇAO = VELOCIDADE * 3
 const VELOCIDADE_DESVIAR = 400
+const DANO = 5
 
 # Essa é a velocidade que queremos atingir
 # "velocity" será interpolado para esse valor conforme o tempo passa
@@ -20,6 +24,7 @@ var estado_atual: Estado = Estado.Normal
 var desviou_tras = false
 
 @onready var corpo_sprite: AnimatedSprite2D = $CorpoSprite
+@onready var ataque_ray_cast: RayCast2D = $AtaqueRayCast
 
 # Muda a direçao da animaçao conforme o eixo da velocidade do personagem
 func atualizar_rotaçao():
@@ -50,7 +55,7 @@ func pegar_direcao():
 
 # Faz o personagem rolar para direçao especificada ou para onde ele esta se movendo
 func desviar(direçao = null):
-	if estado_atual == Estado.Desviando:
+	if estado_atual != Estado.Normal:
 		return
 	
 	corpo_sprite.play("desviar")
@@ -62,6 +67,20 @@ func desviar(direçao = null):
 		desviou_tras = true
 	velocity.x = VELOCIDADE_DESVIAR * direçao.x
 
+func atacar():
+	if estado_atual != Estado.Normal:
+		return
+	
+	corpo_sprite.play("atacar")
+	estado_atual = Estado.Atacando
+	ataque_ray_cast.enabled = true
+	velocity = Vector2.ZERO
+
+func levar_dano(dano, node):
+	vida -= dano
+	if vida <= 0:
+		get_tree().reload_current_scene()
+
 # Quando o jogador quer se mover horizontalmente (clica "A" ou "D")
 func input_move_horizontal(axis):
 	velocidade_alvo.x += axis * VELOCIDADE
@@ -71,16 +90,26 @@ func input_move_vertical(axis):
 	velocidade_alvo.y += axis * VELOCIDADE
 
 func _on_corpo_sprite_animation_finished() -> void:
-	if estado_atual == Estado.Desviando:
-		velocity.x = 0
-		estado_atual = Estado.Normal
-		if desviou_tras:
-			corpo_sprite.flip_h = false
-			desviou_tras = false
+	match estado_atual:
+		Estado.Desviando:
+			velocity.x = 0
+			estado_atual = Estado.Normal
+			if desviou_tras:
+				corpo_sprite.flip_h = false
+				desviou_tras = false
+		Estado.Atacando:
+			var collider = ataque_ray_cast.get_collider()
+			if collider and "levar_dano" in collider:
+				collider.levar_dano(DANO, self)
+			ataque_ray_cast.enabled = false
+			estado_atual = Estado.Normal
 
 func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("desviar"):
 		desviar()
+	
+	if Input.is_action_just_pressed("atacar"):
+		atacar()
 	
 	if estado_atual == Estado.Normal:
 		input_move_horizontal(Input.get_axis("mover_esquerda", "mover_direita"))
