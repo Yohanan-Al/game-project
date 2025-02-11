@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://c85unayb351uj" path="res://Packs/Hero Knight/Sprites/HeroKnight/HeroKnight.png" id="6_x4h1h"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t8f5u"]
-size = Vector2(64, 6)
+size = Vector2(64, 90)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ru3hi"]
 atlas = ExtResource("6_x4h1h")
@@ -463,22 +463,22 @@ animations = [{
 }]
 
 [node name="JogadorPersonagem" type="CharacterBody2D"]
-collision_layer = 2
-collision_mask = 2
 script = ExtResource("1_37iem")
 
-[node name="PeCollision" type="CollisionShape2D" parent="."]
-position = Vector2(-3, -3)
+[node name="CorpoCollision" type="CollisionShape2D" parent="."]
+position = Vector2(-3, -45)
 shape = SubResource("RectangleShape2D_t8f5u")
 
 [node name="CorpoSprite" type="AnimatedSprite2D" parent="."]
 scale = Vector2(2.25, 2.25)
 sprite_frames = SubResource("SpriteFrames_wuq7d")
-animation = &"sofrer"
+animation = &"parado"
 autoplay = "parado"
 offset = Vector2(0, -25.5)
 
 [node name="AtaqueRayCast" type="RayCast2D" parent="."]
-enabled = false
+position = Vector2(0, -45)
+target_position = Vector2(105, 0)
+collision_mask = 3
 
 [connection signal="animation_finished" from="CorpoSprite" to="." method="_on_corpo_sprite_animation_finished"]

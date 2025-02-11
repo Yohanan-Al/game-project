@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://bhw5rgophmvwe"]
+[gd_scene load_steps=6 format=3 uid="uid://bhw5rgophmvwe"]
 
 [ext_resource type="Texture2D" uid="uid://du8x1li2go7mk" path="res://Sprites/Cenarios/floresta_cenario.jpeg" id="1_56spg"]
 [ext_resource type="PackedScene" uid="uid://b5gpm5kosrc7v" path="res://Prefab/jogador_personagem.tscn" id="2_s65ur"]
+[ext_resource type="PackedScene" uid="uid://dw5pspc43q4qc" path="res://Prefab/goblin_personagem.tscn" id="3_amwxy"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_wrsrk"]
 a = Vector2(-373, 5)
@@ -9,7 +10,7 @@ b = Vector2(368, 5.5)
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_k00fy"]
 a = Vector2(1, 259)
-b = Vector2(-1, 2)
+b = Vector2(-1, -71)
 
 [node name="Fase1" type="Node2D"]
 
@@ -24,11 +25,9 @@ zoom = Vector2(1.6, 1.6)
 position = Vector2(-279, 20)
 
 [node name="CenaColisoes" type="StaticBody2D" parent="."]
-collision_layer = 2
-collision_mask = 3
 
 [node name="ParedeCimaCollision" type="CollisionShape2D" parent="CenaColisoes"]
-position = Vector2(4, -84)
+position = Vector2(0, -160)
 shape = SubResource("SegmentShape2D_wrsrk")
 
 [node name="ParedeBaixoCollision" type="CollisionShape2D" parent="CenaColisoes"]
@@ -42,3 +41,6 @@ shape = SubResource("SegmentShape2D_k00fy")
 [node name="ParedeEsquerdaCollision" type="CollisionShape2D" parent="CenaColisoes"]
 position = Vector2(-366, -90)
 shape = SubResource("SegmentShape2D_k00fy")
+
+[node name="GoblinPersonagem" parent="." instance=ExtResource("3_amwxy")]
+position = Vector2(68, -6)
