@@ -1,0 +1,40 @@
+[gd_scene load_steps=6 format=3 uid="uid://b7xkr2a51v2qb"]
+
+[ext_resource type="Texture2D" uid="uid://dfx1v3s5j8k0o" path="res://Sprites/Cenarios/vulcao_cenario.jpeg" id="1_eiuet"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0c54r"]
+size = Vector2(1170, 9)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gephh"]
+size = Vector2(1160, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tgyp6"]
+size = Vector2(10, 389)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6spkm"]
+size = Vector2(8, 400)
+
+[node name="fase_4" type="Node2D"]
+
+[node name="VulcaoCenario" type="Sprite2D" parent="."]
+position = Vector2(576, 324)
+scale = Vector2(2.04255, 2.01242)
+texture = ExtResource("1_eiuet")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="ParedeCimaCollision" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(584, 260.5)
+shape = SubResource("RectangleShape2D_0c54r")
+
+[node name="ParedeBaixoCollision" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(580, 656)
+shape = SubResource("RectangleShape2D_gephh")
+
+[node name="ParedeDireitaCollision" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(1155, 453.5)
+shape = SubResource("RectangleShape2D_tgyp6")
+
+[node name="ParedeEsquerdaCollision" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-4, 456)
+shape = SubResource("RectangleShape2D_6spkm")
