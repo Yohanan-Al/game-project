@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://b5gpm5kosrc7v"]
+[gd_scene load_steps=32 format=3 uid="uid://b5gpm5kosrc7v"]
 
 [ext_resource type="Script" path="res://Scripts/jogador_personagem.gd" id="1_37iem"]
 [ext_resource type="Texture2D" uid="uid://c85unayb351uj" path="res://Packs/Hero Knight/Sprites/HeroKnight/HeroKnight.png" id="6_x4h1h"]
@@ -45,6 +45,42 @@ region = Rect2(600, 55, 100, 55)
 [sub_resource type="AtlasTexture" id="AtlasTexture_2luuu"]
 atlas = ExtResource("6_x4h1h")
 region = Rect2(700, 55, 100, 55)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5ddda"]
+atlas = ExtResource("6_x4h1h")
+region = Rect2(100, 385, 100, 55)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wlvsk"]
+atlas = ExtResource("6_x4h1h")
+region = Rect2(200, 385, 100, 55)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g8rpr"]
+atlas = ExtResource("6_x4h1h")
+region = Rect2(300, 385, 100, 55)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u8o6g"]
+atlas = ExtResource("6_x4h1h")
+region = Rect2(400, 385, 100, 55)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qmntl"]
+atlas = ExtResource("6_x4h1h")
+region = Rect2(500, 385, 100, 55)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1sccs"]
+atlas = ExtResource("6_x4h1h")
+region = Rect2(600, 385, 100, 55)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xqdi8"]
+atlas = ExtResource("6_x4h1h")
+region = Rect2(700, 385, 100, 55)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ewe5y"]
+atlas = ExtResource("6_x4h1h")
+region = Rect2(800, 385, 100, 55)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f0t7k"]
+atlas = ExtResource("6_x4h1h")
+region = Rect2(900, 385, 100, 55)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vibey"]
 atlas = ExtResource("6_x4h1h")
@@ -117,6 +153,38 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_5ddda")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wlvsk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g8rpr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u8o6g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qmntl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1sccs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xqdi8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ewe5y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f0t7k")
+}],
+"loop": false,
+"name": &"desviar",
+"speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_vibey")
 }, {
 "duration": 1.0,
@@ -157,6 +225,10 @@ shape = SubResource("RectangleShape2D_t8f5u")
 [node name="CorpoSprite" type="AnimatedSprite2D" parent="."]
 scale = Vector2(2.25, 2.25)
 sprite_frames = SubResource("SpriteFrames_wuq7d")
-animation = &"parado"
+animation = &"desviar"
 autoplay = "parado"
+frame = 8
+frame_progress = 1.0
 offset = Vector2(0, -25.5)
+
+[connection signal="animation_finished" from="CorpoSprite" to="." method="_on_corpo_sprite_animation_finished"]
