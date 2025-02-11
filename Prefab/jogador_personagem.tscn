@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://b5gpm5kosrc7v"]
+[gd_scene load_steps=51 format=3 uid="uid://b5gpm5kosrc7v"]
 
 [ext_resource type="Script" path="res://Scripts/jogador_personagem.gd" id="1_37iem"]
 [ext_resource type="Texture2D" uid="uid://c85unayb351uj" path="res://Packs/Hero Knight/Sprites/HeroKnight/HeroKnight.png" id="6_x4h1h"]
@@ -29,6 +29,26 @@ region = Rect2(200, 110, 100, 55)
 [sub_resource type="AtlasTexture" id="AtlasTexture_ag248"]
 atlas = ExtResource("6_x4h1h")
 region = Rect2(300, 110, 100, 55)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_twtpq"]
+atlas = ExtResource("6_x4h1h")
+region = Rect2(600, 330, 100, 55)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fdvr8"]
+atlas = ExtResource("6_x4h1h")
+region = Rect2(700, 330, 100, 55)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6cklo"]
+atlas = ExtResource("6_x4h1h")
+region = Rect2(800, 330, 100, 55)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bc5gd"]
+atlas = ExtResource("6_x4h1h")
+region = Rect2(900, 330, 100, 55)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_si5ry"]
+atlas = ExtResource("6_x4h1h")
+region = Rect2(0, 385, 100, 55)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_22xho"]
 atlas = ExtResource("6_x4h1h")
@@ -69,6 +89,38 @@ region = Rect2(600, 55, 100, 55)
 [sub_resource type="AtlasTexture" id="AtlasTexture_2luuu"]
 atlas = ExtResource("6_x4h1h")
 region = Rect2(700, 55, 100, 55)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o0xjl"]
+atlas = ExtResource("6_x4h1h")
+region = Rect2(800, 275, 100, 55)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x4jk2"]
+atlas = ExtResource("6_x4h1h")
+region = Rect2(900, 275, 100, 55)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ycura"]
+atlas = ExtResource("6_x4h1h")
+region = Rect2(0, 330, 100, 55)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xtwll"]
+atlas = ExtResource("6_x4h1h")
+region = Rect2(100, 330, 100, 55)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nopo4"]
+atlas = ExtResource("6_x4h1h")
+region = Rect2(200, 330, 100, 55)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lxgak"]
+atlas = ExtResource("6_x4h1h")
+region = Rect2(300, 330, 100, 55)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xixvy"]
+atlas = ExtResource("6_x4h1h")
+region = Rect2(400, 330, 100, 55)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dxa6x"]
+atlas = ExtResource("6_x4h1h")
+region = Rect2(500, 330, 100, 55)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5ddda"]
 atlas = ExtResource("6_x4h1h")
@@ -165,6 +217,26 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_twtpq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fdvr8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6cklo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bc5gd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_si5ry")
+}],
+"loop": false,
+"name": &"bloqueado",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_22xho")
 }, {
 "duration": 1.0,
@@ -197,6 +269,35 @@ animations = [{
 "loop": true,
 "name": &"correr",
 "speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o0xjl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x4jk2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ycura")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xtwll")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nopo4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lxgak")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xixvy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dxa6x")
+}],
+"loop": true,
+"name": &"defender",
+"speed": 6.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -272,7 +373,7 @@ shape = SubResource("RectangleShape2D_t8f5u")
 [node name="CorpoSprite" type="AnimatedSprite2D" parent="."]
 scale = Vector2(2.25, 2.25)
 sprite_frames = SubResource("SpriteFrames_wuq7d")
-animation = &"atacar"
+animation = &"bloqueado"
 autoplay = "parado"
 offset = Vector2(0, -25.5)
 

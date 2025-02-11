@@ -3,7 +3,8 @@ extends CharacterBody2D
 enum Estado {
 	Normal,
 	Desviando,
-	Atacando
+	Atacando,
+	Defendendo
 }
 
 var vida = 20
@@ -12,6 +13,7 @@ const VELOCIDADE = 300.0
 const ACELERAÇAO = VELOCIDADE * 3
 const VELOCIDADE_DESVIAR = 400
 const DANO = 5
+const DEFESA = 5
 
 # Essa é a velocidade que queremos atingir
 # "velocity" será interpolado para esse valor conforme o tempo passa
@@ -77,9 +79,28 @@ func atacar():
 	velocity = Vector2.ZERO
 
 func levar_dano(dano, node):
+	if estado_atual == Estado.Defendendo:
+		corpo_sprite.play("bloqueado")
+		# Só defende se o alvo estiver em nossa frente
+		if (not corpo_sprite.flip_h and node.position.x > position.x) or (corpo_sprite.flip_h and position.x > node.position.x):
+			dano /= DEFESA
 	vida -= dano
 	if vida <= 0:
 		get_tree().reload_current_scene()
+
+func começar_defender():
+	if estado_atual != Estado.Normal:
+		return
+	
+	corpo_sprite.play("defender")
+	estado_atual = Estado.Defendendo
+	velocity = Vector2.ZERO
+
+func terminar_defender():
+	if estado_atual != Estado.Defendendo:
+		return
+	
+	estado_atual = Estado.Normal
 
 # Quando o jogador quer se mover horizontalmente (clica "A" ou "D")
 func input_move_horizontal(axis):
@@ -103,6 +124,9 @@ func _on_corpo_sprite_animation_finished() -> void:
 				collider.levar_dano(DANO, self)
 			ataque_ray_cast.enabled = false
 			estado_atual = Estado.Normal
+		Estado.Defendendo:
+			if corpo_sprite.animation == "bloqueado":
+				corpo_sprite.play("defender")
 
 func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("desviar"):
@@ -110,6 +134,11 @@ func _physics_process(delta: float) -> void:
 	
 	if Input.is_action_just_pressed("atacar"):
 		atacar()
+	
+	if Input.is_action_pressed("defender"):
+		começar_defender()
+	else:
+		terminar_defender()
 	
 	if estado_atual == Estado.Normal:
 		input_move_horizontal(Input.get_axis("mover_esquerda", "mover_direita"))
