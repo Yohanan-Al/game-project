@@ -1,5 +1,7 @@
 extends "res://Scripts/personagem_base.gd"
 
+@onready var bar_progresso = get_parent().get_node("VidaJogadorProgressBar")
+
 # Quando o jogador quer se mover horizontalmente (clica "A" ou "D")
 func input_move_horizontal(axis):
 	velocidade_alvo.x += axis * velocidade
@@ -25,6 +27,8 @@ func _physics_process(delta: float) -> void:
 		começar_defender()
 	else:
 		terminar_defender()
+	
+	bar_progresso.value = vida / vida_maxima
 	
 	if estado_atual == Estado.Normal:
 		input_move_horizontal(Input.get_axis("mover_esquerda", "mover_direita"))

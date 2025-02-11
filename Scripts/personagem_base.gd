@@ -9,7 +9,8 @@ enum Estado {
 	ParaVoltarNormal
 }
 
-@export var vida = 20
+@export var vida: float = 20
+@export var vida_maxima: float = 20
 
 @export var velocidade = 300.0
 @onready var ACELERAÇAO = velocidade * 3

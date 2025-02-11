@@ -44,3 +44,10 @@ shape = SubResource("SegmentShape2D_k00fy")
 
 [node name="GoblinPersonagem" parent="." instance=ExtResource("3_amwxy")]
 position = Vector2(68, -6)
+
+[node name="VidaJogadorProgressBar" type="ProgressBar" parent="."]
+offset_left = -355.0
+offset_top = -215.0
+offset_right = -136.0
+offset_bottom = -188.0
+max_value = 1.0

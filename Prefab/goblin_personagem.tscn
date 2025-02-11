@@ -254,3 +254,10 @@ shape = SubResource("RectangleShape2D_7e2gs")
 [node name="AtaqueRayCast" type="RayCast2D" parent="."]
 position = Vector2(0, -45)
 target_position = Vector2(55, 0)
+
+[node name="VidaProgressBar" type="ProgressBar" parent="."]
+offset_left = -32.0
+offset_top = -104.0
+offset_right = 33.0
+offset_bottom = -77.0
+max_value = 1.0
