@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://bhw5rgophmvwe"]
+[gd_scene load_steps=7 format=3 uid="uid://bhw5rgophmvwe"]
 
 [ext_resource type="Texture2D" uid="uid://du8x1li2go7mk" path="res://Sprites/Cenarios/floresta_cenario.jpeg" id="1_56spg"]
 [ext_resource type="PackedScene" uid="uid://b5gpm5kosrc7v" path="res://Prefab/jogador_personagem.tscn" id="2_s65ur"]
+[ext_resource type="PackedScene" uid="uid://c8otkxr8eehra" path="res://Prefab/parede_fase.tscn" id="4_jhroq"]
 [ext_resource type="PackedScene" uid="uid://doa2ebaowtc5e" path="res://Prefab/bandido_leve_personagem.tscn" id="4_sjo3l"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_wrsrk"]
@@ -51,3 +52,6 @@ max_value = 1.0
 
 [node name="BandidoLevePersonagem" parent="." instance=ExtResource("4_sjo3l")]
 position = Vector2(80, 109)
+
+[node name="ParedeFase" parent="." instance=ExtResource("4_jhroq")]
+position = Vector2(353, 37)

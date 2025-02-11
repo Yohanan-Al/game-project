@@ -243,8 +243,10 @@ velocidade = 150.0
 [node name="CorpoSprite" type="AnimatedSprite2D" parent="."]
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_gdcjy")
-animation = &"parado"
+animation = &"atacar"
 autoplay = "parado"
+frame = 7
+frame_progress = 1.0
 offset = Vector2(0, -15)
 
 [node name="CorpoCollision" type="CollisionShape2D" parent="."]
@@ -252,7 +254,7 @@ position = Vector2(0, -34)
 shape = SubResource("RectangleShape2D_7e2gs")
 
 [node name="AtaqueRayCast" type="RayCast2D" parent="."]
-position = Vector2(0, -45)
+position = Vector2(0, -22)
 target_position = Vector2(55, 0)
 
 [node name="VidaProgressBar" type="ProgressBar" parent="."]

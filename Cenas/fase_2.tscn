@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://cbr785mdwj0gs" path="res://Sprites/Cenarios/deserto_cenario.jpeg" id="1_h3nby"]
 [ext_resource type="PackedScene" uid="uid://b5gpm5kosrc7v" path="res://Prefab/jogador_personagem.tscn" id="2_ag0qv"]
 [ext_resource type="PackedScene" uid="uid://dw5pspc43q4qc" path="res://Prefab/goblin_personagem.tscn" id="3_lckjt"]
-[ext_resource type="Script" path="res://Scripts/goblin_personagem.gd" id="4_0qyvr"]
+[ext_resource type="PackedScene" uid="uid://c8otkxr8eehra" path="res://Prefab/parede_fase.tscn" id="4_q8g5e"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0xigc"]
 size = Vector2(1134.71, 8)
@@ -50,16 +50,16 @@ pode_desviar = false
 
 [node name="GoblinPersonagem" parent="CenasColisoes2" instance=ExtResource("3_lckjt")]
 position = Vector2(857.931, 389.437)
-script = ExtResource("4_0qyvr")
 
 [node name="GoblinPersonagem2" parent="CenasColisoes2" instance=ExtResource("3_lckjt")]
-position = Vector2(674.089, 389.437)
-script = ExtResource("4_0qyvr")
+position = Vector2(684.623, 383.537)
 
 [node name="GoblinPersonagem3" parent="CenasColisoes2" instance=ExtResource("3_lckjt")]
 position = Vector2(674.089, 495.647)
-script = ExtResource("4_0qyvr")
 
 [node name="GoblinPersonagem4" parent="CenasColisoes2" instance=ExtResource("3_lckjt")]
 position = Vector2(857.931, 507.448)
-script = ExtResource("4_0qyvr")
+
+[node name="ParedeFase" parent="." instance=ExtResource("4_q8g5e")]
+position = Vector2(1137, 439)
+scale = Vector2(1, 1.62)

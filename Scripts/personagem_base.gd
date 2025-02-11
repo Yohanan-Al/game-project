@@ -78,7 +78,6 @@ func desviar(direçao = null):
 func atacar():
 	if estado_atual != Estado.Normal:
 		return
-	print("atacar")
 	corpo_sprite.play("atacar")
 	estado_atual = Estado.Atacando
 	velocity = Vector2.ZERO
@@ -148,5 +147,8 @@ func _physics_process(delta: float) -> void:
 		velocidade_alvo = Vector2.ZERO
 	
 	atualizar_rotaçao()
-	ataque_ray_cast.target_position.x = ataque_ray_cast_length * (1 if corpo_sprite.flip_h and not virado_por_padrao else -1)
+	if not virado_por_padrao:
+		ataque_ray_cast.target_position.x = ataque_ray_cast_length * (-1 if corpo_sprite.flip_h else 1)
+	else:
+		ataque_ray_cast.target_position.x = ataque_ray_cast_length * (1 if corpo_sprite.flip_h else -1)
 	move_and_slide()

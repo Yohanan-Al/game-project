@@ -15,6 +15,10 @@ run/main_scene="res://Cenas/fase_1.tscn"
 config/features=PackedStringArray("4.3", "Mobile")
 config/icon="res://icon.svg"
 
+[autoload]
+
+Fases="*res://Scripts/fases.gd"
+
 [editor]
 
 version_control/plugin_name="GitPlugin"

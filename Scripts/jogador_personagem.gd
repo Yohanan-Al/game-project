@@ -28,7 +28,8 @@ func _physics_process(delta: float) -> void:
 	else:
 		terminar_defender()
 	
-	bar_progresso.value = vida / vida_maxima
+	if bar_progresso:
+		bar_progresso.value = vida / vida_maxima
 	
 	if estado_atual == Estado.Normal:
 		input_move_horizontal(Input.get_axis("mover_esquerda", "mover_direita"))
